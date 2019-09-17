@@ -66,6 +66,9 @@ daemon:
   # extraVolumes is a list of volumes to be mounted on the daemon container
   extraVolumes: []
 
+  # namespace defines where to deploy the assets
+  namespace: {}
+
 # drivers containers the settings for the drivers
 drivers:
   # redis settings for the redis related drivers

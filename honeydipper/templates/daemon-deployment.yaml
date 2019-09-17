@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "honeydipper.fullname" . }}
+  {{- with .Values.daemon.namespace.name }}
+  {{- if ne . "default" }}
+  namespace: {{ . }}
+  {{- end }}
+  {{- end }}
   labels:
     app.kubernetes.io/name: {{ include "honeydipper.name" . }}
     helm.sh/chart: {{ include "honeydipper.chart" . }}

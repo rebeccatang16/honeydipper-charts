@@ -5,6 +5,11 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
+  {{- with .Values.daemon.namespace.name }}
+  {{- if ne . "default" }}
+  namespace: {{ . }}
+  {{- end }}
+  {{- end }}
   labels:
     app.kubernetes.io/name: {{ include "honeydipper.name" . }}
     helm.sh/chart: {{ include "honeydipper.chart" . }}
