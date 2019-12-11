@@ -1,0 +1,14 @@
+{{- with .Values.daemon.namespace }}
+{{- if ne .name "default" }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .name }}
+  labels:
+    name: {{ .name }}
+    {{- range $key, $value := .labels }}
+    {{ $key }}: {{ $value }}
+    {{- end }}
+{{- end }}
+{{- end }}
