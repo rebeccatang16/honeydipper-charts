@@ -35,6 +35,9 @@ spec:
       serviceAccountName: "{{ . }}"
       {{- end }}
       containers:
+        {{- with .Values.daemon.additionalSidecars }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         {{- if .Values.drivers.redis.local }}
         - name: {{ .Chart.Name }}-redis
           image: "{{ .Values.drivers.redis.image.repository }}:{{ .Values.drivers.redis.image.tag }}"

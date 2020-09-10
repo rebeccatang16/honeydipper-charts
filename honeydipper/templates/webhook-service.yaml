@@ -20,7 +20,7 @@ spec:
   type: {{ .Values.drivers.webhook.service.type }}
   ports:
     - port: {{ .Values.drivers.webhook.service.port }}
-      targetPort: {{ .Values.drivers.webhook.service.port }}
+      targetPort: {{ default .Values.drivers.webhook.service.port .Values.drivers.webhook.service.targetPort }}
       {{- if .Values.drivers.webhook.service.nodePort }}
       nodePort: {{ .Values.drivers.webhook.service.nodePort }}
       {{- end }}

@@ -30,6 +30,9 @@ daemon:
   # args are the arguments passed to the daemon, a list of services to run in the daemon
   args: []
 
+  # additionalSidecars is a list of additional containers to add to the daemon
+  additionalSidecars: []
+
   # resources specifies the resource limitation for the daemon container
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
@@ -87,6 +90,7 @@ drivers:
       # type is the type of kubernetes service for the webhook
       type: LoadBalancer
       port: 8080
+      targetPort: 0
       nodePort: 0
 
       # annotations are the annotations for the service
